@@ -14,7 +14,6 @@ struct produto{
     float preco;
 };
 void menu();
-int a = 0;
 void adicionar(struct produto *p);
 void alterar(struct produto *p);
 void remover(struct produto *p);
@@ -49,22 +48,18 @@ int main (){
     return 0;
   }
 void menu(){
-  //fflush(stdin);
   printf("1 - Adicionar produto\n");
   printf("2 - Alterar produto\n");
   printf("3 - Remover\n");
   printf("4 - Listar produto\n");
   printf("5 - Sair\n");
   printf("Digite a opcao desejada: ");
-  //while (getchar() != '\n');
 }
 void adicionar(struct produto *p){
   int i;
   for(i=0; i <100; i++){
-    //fflush(stdin);
     if(p[i].codigo == 0) {
       printf("Digite o nome do produto: "); 
-      //scanf("%s", p[i].nome);
     scanf(" %[^\n]%*c", p[i].nome); //para ler strings com espaços com scanset
       printf("Digite o codigo do produto: ");
       scanf("%d", &p[i].codigo);
@@ -78,14 +73,14 @@ void adicionar(struct produto *p){
   system("cls");
 }
 
-void alterar(struct produto *p){
+void alterar(struct produto *p){//alterar o produto
   int i, codigo;
   printf("Digite o codigo do produto que deseja alterar: ");
   scanf("%d", &codigo);
   for(i=0; i <100; i++){
     if(p[i].codigo == 0){
       printf("Digite o nome do produto: ");
-      scanf("%d" , &p[i].nome);
+      scanf(" %[^\n]%*c", p[i].nome);
       printf("Digite o codigo do produto: ");
       scanf("%d", &p[i].codigo);
       printf("Digite o preco do produto: ");
@@ -93,9 +88,9 @@ void alterar(struct produto *p){
       printf("Digite a quantidade do produto: ");
       scanf("%d", &p[i].quantidade);
     } break;
-  } //printf("&d", p[i].codigo);
+  }
 }
-void remover(struct produto *p){
+void remover(struct produto *p){ //remove o produto indicado
   int i, codigo;
   printf("Digite o codigo do produto que voce deseja remover: ");
   scanf("%d", &codigo);
@@ -103,12 +98,11 @@ void remover(struct produto *p){
     if(p[i].codigo == codigo){
       p[i].codigo = 0;
       break;
-      
     }
   }
   
 }
-void listar(struct produto *p){
+void listar(struct produto *p){ //listar os produtos
   int i; int lenght; int g;
   for(i=0; i<100; i++){
       if(p[i].codigo == 0){
